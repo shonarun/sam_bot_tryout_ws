@@ -13,6 +13,7 @@ def generate_launch_description():
     default_model_path = os.path.join(pkg_share, 'src', 'description', 'sam_bot_description.sdf')
     default_rviz_config_path = os.path.join(pkg_share, 'rviz', 'config.rviz')
     bridge_config_path = os.path.join(pkg_share, 'config', 'bridge_config.yaml')
+    gz_spawn_model_launch_source = os.path.join(ros_gz_sim_share, "launch", "gz_spawn_model.launch.py")
 
     static_tf = Node(
         package='tf2_ros',
