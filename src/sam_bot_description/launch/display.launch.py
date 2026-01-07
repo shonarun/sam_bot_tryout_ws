@@ -71,5 +71,8 @@ def generate_launch_description():
         robot_state_publisher_node,
         rviz_node,
         static_tf,
-        ExecuteProcess(cmd=['gz', 'sim', '-g'], output='screen')
+        ExecuteProcess(cmd=['gz', 'sim', '-g'], output='screen'),
+        gz_server,
+        ros_gz_bridge,
+        spawn_entity
     ])
