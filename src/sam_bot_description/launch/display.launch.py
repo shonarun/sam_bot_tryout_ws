@@ -3,11 +3,11 @@ from launch.actions import DeclareLaunchArgument
 from launch.conditions import IfCondition, UnlessCondition
 from launch.substitutions import Command, LaunchConfiguration
 from launch_ros.actions import Node
-from launch_ros.substitutions import FindPackageShare
 import os
+from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
-    pkg_share = FindPackageShare(package='sam_bot_description').find('sam_bot_description')
+    pkg_share = get_package_share_directory(package='sam_bot_description').find('sam_bot_description')
     default_model_path = os.path.join(pkg_share, 'src', 'description', 'sam_bot_description.sdf')
     default_rviz_config_path = os.path.join(pkg_share, 'rviz', 'config.rviz')
     bridge_config_path = os.path.join(pkg_share, 'config', 'bridge_config.yaml')
@@ -39,5 +39,6 @@ def generate_launch_description():
         DeclareLaunchArgument(name='model', default_value=default_model_path, description='Absolute path to robot model file'),
         DeclareLaunchArgument(name='rvizconfig', default_value=default_rviz_config_path, description='Absolute path to rviz config file'),
         robot_state_publisher_node,
+        rviz_node,
         static_tf
     ])
