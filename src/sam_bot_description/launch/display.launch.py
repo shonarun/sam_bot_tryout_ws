@@ -1,5 +1,5 @@
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, ExecuteProcess
 from launch.conditions import IfCondition, UnlessCondition
 from launch.substitutions import Command, LaunchConfiguration
 from launch_ros.actions import Node
@@ -70,5 +70,6 @@ def generate_launch_description():
         DeclareLaunchArgument(name='use_sim_time', default_value='True', description='Flag to enable use_sim_time'),
         robot_state_publisher_node,
         rviz_node,
-        static_tf
+        static_tf,
+        ExecuteProcess(cmd=['gz', 'sim', '-g'], output='screen')
     ])
