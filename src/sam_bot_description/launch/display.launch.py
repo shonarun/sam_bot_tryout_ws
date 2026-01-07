@@ -1,10 +1,13 @@
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch.conditions import IfCondition, UnlessCondition
 from launch.substitutions import Command, LaunchConfiguration
 from launch_ros.actions import Node
 import os
 from ament_index_python.packages import get_package_share_directory
+from ros_gz_sim.actions import GzServer
+from ros_gz_bridge.actions import RosGzBridge
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 def generate_launch_description():
     pkg_share = get_package_share_directory(package='sam_bot_description').find('sam_bot_description')
@@ -37,6 +40,28 @@ def generate_launch_description():
         name='rviz2',
         output='screen',
         arguments=['-d', LaunchConfiguration('rvizconfig')],
+    )
+    gz_server = GzServer(
+        world_sdf_file=world_path,
+        container_name='ros_gz_container',
+        create_own_container='True',
+        use_composition='True',
+    )
+    ros_gz_bridge = RosGzBridge(
+        bridge_name='ros_gz_bridge',
+        config_file=bridge_config_path,
+        container_name='ros_gz_container',
+        create_own_container='False',
+        use_composition='True',
+    )
+    spawn_entity = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(gz_spawn_model_launch_source),
+        launch_arguments={
+            'world': 'my_world',
+            'topic': '/robot_description',
+            'entity_name': 'sam_bot',
+            'z': '0.65',
+        }.items(),
     )
 
     return LaunchDescription([
