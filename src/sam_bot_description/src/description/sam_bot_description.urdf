@@ -78,7 +78,9 @@
             </material>
         </visual>
     </link>
-    <link name="base_footprint" />
+    <link name="base_footprint">
+        <xacro:box_inertia m="15" w="${base_width}" d="${base_length}" h="${base_height}" />
+    </link>
     <joint name="base_joint" type="fixed">
         <parent link="base_link" />
         <child link="base_footprint" />
