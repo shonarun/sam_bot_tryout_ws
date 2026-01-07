@@ -24,4 +24,5 @@
             </material>
         </visual>
      </link>
+     <link name = "base_footprint" />
 </robot>
