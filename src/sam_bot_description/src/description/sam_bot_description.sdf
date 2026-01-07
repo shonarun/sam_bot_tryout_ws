@@ -206,6 +206,14 @@
       </collision>
 
       <xacro:box_inertia m="0.1" w="0.1" d="0.1" h="0.1" />
+
+      <sensor name="imu_sensor" type="imu">
+        <always_on>true</always_on>
+        <update_rate>100</update_rate>
+        <visualize>true</visualize>
+        <topic>demo/imu</topic>
+        <gz_frame_id>imu_link</gz_frame_id>
+      </sensor>
     </link>
   </model>
 </sdf>
