@@ -112,4 +112,17 @@
         <child link="front_caster" />
         <origin xyz="${caster_xoff} 0.0 ${-(base_height / 2.0)}" rpy="0 0 0" />
     </joint>
+
+    <link name='imu_link'>
+        <pose relative_to="imu_joint" />
+        <visual name="imu_link_visual">
+            <geometry>
+                <box>
+                    <size>
+                        0.1 0.1 0.1
+                    </size>
+                </box>
+            </geometry>
+        </visual>
+    </link>
 </robot>
