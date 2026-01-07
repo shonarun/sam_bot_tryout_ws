@@ -8,6 +8,8 @@ from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
     pkg_share = get_package_share_directory(package='sam_bot_description').find('sam_bot_description')
+    ros_gz_sim_share = get_package_share_directory('ros_gz_sim')
+
     default_model_path = os.path.join(pkg_share, 'src', 'description', 'sam_bot_description.sdf')
     default_rviz_config_path = os.path.join(pkg_share, 'rviz', 'config.rviz')
     bridge_config_path = os.path.join(pkg_share, 'config', 'bridge_config.yaml')
