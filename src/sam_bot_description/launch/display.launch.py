@@ -11,6 +11,16 @@ def generate_launch_description():
     default_model_path = os.path.join(pkg_share, 'src', 'description', 'sam_bot_description.urdf')
     default_rviz_config_path = os.path.join(pkg_share, 'rviz', 'config.rviz')
 
+    static_tf = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        name='static_tf_map_to_base',
+        arguments=[
+            '0.0', '0.0', '0.5',
+            '0.0', '0.0', '0.0', '1.0',
+            'base_link', 'base_laser'
+        ]
+    )
     robot_state_publisher_node = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
@@ -41,6 +51,7 @@ def generate_launch_description():
         DeclareLaunchArgument(name='gui', default_value='True', description='Flag to enable joint_state_publisher_gui'),
         DeclareLaunchArgument(name='model', default_value=default_model_path, description='Absolute path to robot model file'),
         DeclareLaunchArgument(name='rvizconfig', default_value=default_rviz_config_path, description='Absolute path to rviz config file'),
+        static_tf,
         joint_state_publisher_node,
         joint_state_publisher_gui_node,
         robot_state_publisher_node,
