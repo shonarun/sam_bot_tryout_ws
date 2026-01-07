@@ -25,4 +25,9 @@
         </visual>
      </link>
      <link name = "base_footprint" />
+     <joint name = "base_joint" type = "fixed">
+        <parent link = "base_link" />
+        <child name = "base_footprint" />
+        <origin xyz="0.0 0.0 ${-(wheel_radius+wheel_zoff)}" rpy="0 0 0"/>
+     </joint>
 </robot>
