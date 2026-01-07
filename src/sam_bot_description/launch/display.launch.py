@@ -16,7 +16,7 @@ def generate_launch_description():
         executable='static_transform_publisher',
         name='static_tf_map_to_base',
         arguments=[
-            '0.0', '0.0', '0.5',
+            '0.1', '0.0', '0.2',
             '0.0', '0.0', '0.0', '1.0',
             'base_link', 'base_laser'
         ]
