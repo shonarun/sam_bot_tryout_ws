@@ -10,7 +10,7 @@ from ros_gz_sim.actions import GzServer
 from ros_gz_bridge.actions import RosGzBridge
 
 def generate_launch_description():
-    pkg_share = get_package_share_directory(package='sam_bot_description').find('sam_bot_description')
+    pkg_share = get_package_share_directory('sam_bot_description')
     ros_gz_sim_share = get_package_share_directory('ros_gz_sim')
 
     default_model_path = os.path.join(pkg_share, 'src', 'description', 'sam_bot_description.sdf')
