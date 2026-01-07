@@ -134,5 +134,7 @@
                 </box>
             </geometry>
         </collision>
+
+        <xacro:box_inertia m="0.1" w="0.1" d="0.1" h="0.1" />
     </link>
 </robot>
