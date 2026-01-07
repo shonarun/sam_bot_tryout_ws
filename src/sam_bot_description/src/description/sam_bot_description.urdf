@@ -57,6 +57,7 @@
                     <cylinder radius="${wheel_radius}" length="${wheel_width}" />
                 </geometry>
             </collision>
+            <xacro:cylinder_inertia m="0.5" r="${wheel_radius}" h="${wheel_width}"/>
         </link>
         <joint name="${prefix}_joint" type="continuous">
             <parent link="base_link" />
