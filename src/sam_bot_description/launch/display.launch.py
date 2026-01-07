@@ -10,6 +10,7 @@ def generate_launch_description():
     pkg_share = FindPackageShare(package='sam_bot_description').find('sam_bot_description')
     default_model_path = os.path.join(pkg_share, 'src', 'description', 'sam_bot_description.sdf')
     default_rviz_config_path = os.path.join(pkg_share, 'rviz', 'config.rviz')
+    bridge_config_path = os.path.join(pkg_share, 'config', 'bridge_config.yaml')
 
     static_tf = Node(
         package='tf2_ros',
