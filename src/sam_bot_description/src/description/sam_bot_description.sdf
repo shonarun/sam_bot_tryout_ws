@@ -277,6 +277,11 @@
         </imu>
       </sensor>
     </link>
+    <joint name='imu_joint' type='fixed'>
+      <parent>base_link</parent>
+      <child>imu_link</child>
+      <pose relative_to="base_link">0.0 0.0 0.01 0 0 0</pose>
+    </joint>
     <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
       <!-- wheels -->
       <left_joint>drivewhl_l_joint</left_joint>
