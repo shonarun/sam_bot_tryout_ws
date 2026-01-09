@@ -303,6 +303,11 @@
         </geometry>
       </visual>
     </link>
+    <joint name="lidar_joint" type="fixed">
+      <parent link="base_link" />
+      <child link="lidar_link" />
+      <origin xyz="0 0 0.12" rpy="0 0 0" />
+    </joint>
     <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
       <!-- wheels -->
       <left_joint>drivewhl_l_joint</left_joint>
